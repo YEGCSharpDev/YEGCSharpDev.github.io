@@ -1,0 +1,47 @@
+name: Build and Deploy Site
+
+on:
+  push:
+    branches: ["main"] # Runs every time you push to main
+  workflow_dispatch:   # Allows you to trigger a build manually
+
+# Required permissions for GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Prevents multiple builds from colliding
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Install Nix
+        uses: cachix/install-nix-action@v26
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Build site with Nix
+        run: nix develop --command ./build.sh
+        
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public' # Only uploads the compiled output
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
