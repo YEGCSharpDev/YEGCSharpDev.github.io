@@ -32,7 +32,7 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Build site with Nix
-        run: nix develop --command ./build.sh
+        run: nix develop --command bash ./build.sh
         
       - name: Setup Pages
         uses: actions/configure-pages@v4
