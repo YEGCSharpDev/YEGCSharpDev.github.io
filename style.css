@@ -1,21 +1,22 @@
 /* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-/* 1. Terminal-inspired Color Palette (Dark Mode Default) */
+/* 1. Catppuccin Mocha Palette */
 :root {
-    --bg-color: #1a1b26; /* Deep dark background */
-    --text-color: #a9b1d6; /* Soft blue-grey text */
-    --heading-color: #c0caf5; /* Brighter text for headings */
-    --link-color: #7aa2f7; /* Accent color for links */
-    --code-bg: #16161e;
-    --border-color: #414868;
+    --bg-color: #1e1e2e;      /* Mocha Base */
+    --text-color: #cdd6f4;    /* Mocha Text */
+    --heading-color: #b4befe; /* Mocha Lavender (soft contrast for headings) */
+    --link-color: #89b4fa;    /* Mocha Blue */
+    --code-bg: #181825;       /* Mocha Mantle (slightly darker than base for code blocks) */
+    --border-color: #313244;  /* Mocha Surface0 */
 }
 
 /* 2. The Base Reset & Typography */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    /* Uses system fonts for speed, or a nice monospace if you prefer */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /* Atkinson Hyperlegible set as primary, falling back to system fonts */
+    font-family: 'Atkinson Hyperlegible', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -48,6 +49,7 @@ a:hover {
 
 /* 5. Code Block Styling (Essential for Dev sites) */
 code, pre {
+    /* Kept your monospace stack for code blocks, as Atkinson is proportional */
     font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
     background-color: var(--code-bg);
     border-radius: 4px;
