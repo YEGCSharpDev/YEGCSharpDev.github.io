@@ -2,5 +2,5 @@
 
 
 ```nix
-nix develop --command ./build.sh
+nix develop --command zola serve
 ```
