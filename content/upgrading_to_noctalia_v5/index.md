@@ -1,6 +1,5 @@
 ---
 title : Upgrading to Noctalia v5.0 on CachyOs
-draft : true
 ---
 # Problem Statement
 
