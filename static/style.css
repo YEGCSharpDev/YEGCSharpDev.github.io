@@ -84,3 +84,12 @@ blockquote ul {
     margin-top: 0.5em;
     margin-bottom: 0;
 }
+
+/* 7. Responsive Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Removes weird bottom spacing */
+    margin: 2em auto; /* Centers the image and gives it breathing room */
+    border-radius: 8px; /* Optional: rounds the corners to match your blurbs */
+}
