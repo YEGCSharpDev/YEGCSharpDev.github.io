@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$if(title)$$title$$else$My Website$endif$</title>
-    <link rel="stylesheet" href="style.css">
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <link rel="stylesheet" href="{{ get_url(path="style.css") }}">
 </head>
 <body>
     <main>
-        $body$
+        {% block content %}{% endblock content %}
     </main>
 </body>
 </html>

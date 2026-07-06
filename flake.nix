@@ -1,5 +1,5 @@
 {
-  description = "Pandoc minimal static site environment";
+  description = "Zola static site environment";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -13,7 +13,7 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in {
           default = pkgs.mkShell {
-            packages = [ pkgs.pandoc ];
+            packages = [ pkgs.zola ];
           };
         });
     };
