@@ -3,7 +3,7 @@ title: Home
 ---
 # Hello World
 
-Welcome to my new terminal-style website. I write this entirely in **Markdown**, and my custom script handles the rest.
+Welcome to my new terminal-style website. I write this entirely in **Markdown**, and zola handles the rest.
 
 
 ## Current Projects
