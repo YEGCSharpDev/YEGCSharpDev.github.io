@@ -9,49 +9,11 @@
 <body>
     <div class="site-wrapper">
         <main>
-            <!-- The nav used to be here, we removed it so it doesn't show globally -->
             {% block content %}{% endblock content %}
         </main>
 
-        <!-- Right Side Information -->
-        <aside class="sidebar">
-            <div class="sidebar-content">
-                <p class="obsession-text">Latest obsession:</p>
-                <!-- Example ASCII Art (A little cat) -->
-                <pre class="ascii-art">
-                  
-                  /#\
-                 /###\
-                /#####\
-               /#######\
-              _ "=######\
-             /##=,_\#####\
-            /#############\
-           /###############\
-          /#################\
-         /###################\
-        /########*"""*########\
-       /#######/       \#######\
-      /########         ########\
-     /#########         ######m=,_
-    /##########         ##########\
-   /######***             ***######\
-  /###**                       **###\
- /**                               **\\
-                </pre>
-<h3>About Me</h3>
-                <p>
-<code>                
-while (true) {<br>
-    days = random.randint(7,9999);<br>
-    obsess_about_tech(days);<br>
-    get_sick_of_it();<br>
-    discover_new_tech();<br>
-}
-</code>
-                </p>
-            </div>
-        </aside>
+        <!-- Right Side Information Block (Only shows if a page fills it!) -->
+        {% block sidebar %}{% endblock sidebar %}
     </div>
 </body>
 </html>
