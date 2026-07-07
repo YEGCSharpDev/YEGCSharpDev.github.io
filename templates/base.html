@@ -8,6 +8,11 @@
 </head>
 <body>
     <main>
+        <!-- The new Home navigation -->
+        <nav class="top-nav">
+            <a href="{{ get_url(path="/") }}" class="home-link">← Home</a>
+        </nav>
+        
         {% block content %}{% endblock content %}
     </main>
 </body>
