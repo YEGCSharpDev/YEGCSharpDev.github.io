@@ -8,6 +8,10 @@ compile_sass = true
 title = "YEGCSharpDev"
 
 # The site description
-description = "Edmonton C# Developers Group"
+description = "I write stuff"
 
+default_language = "en"
 
+minify_html = false
+
+generate_feeds = true
