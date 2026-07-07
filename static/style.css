@@ -238,3 +238,23 @@ img {
     font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
     font-size: 0.95rem;
 }
+
+/* Sidebar Text */
+.obsession-text {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--heading-color);
+}
+
+/* ASCII Art Styling */
+.ascii-art {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: var(--heading-color);
+    font-size: 0.5rem; /* Dramatically shrinks the size of the art */
+    line-height: 1.1; /* Keeps the vertical proportions accurate */
+    margin-bottom: 2rem;
+    margin-top: 0;
+    overflow: hidden; 
+}
