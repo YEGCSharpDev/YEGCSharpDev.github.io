@@ -3,5 +3,16 @@
 {% block title %}{{ page.title }}{% endblock title %}
 
 {% block content %}
-{{ page.content | safe }}
+<header class="page-header">
+    <h1 class="page-title">{{ page.title }}</h1>
+    
+    {% if page.date %}
+        <!-- You can change the date format below. %F outputs YYYY-MM-DD -->
+        <div class="page-date">{{ page.date | date(format="%B %d, %Y") }}</div>
+    {% endif %}
+</header>
+
+<div class="page-content">
+    {{ page.content | safe }}
+</div>
 {% endblock content %}
