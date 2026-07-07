@@ -1,6 +1,6 @@
 ---
 title: Extending Zigbee Flood Sensor
-date : 2026-07-06
+date : 2026-07-05
 slug : "modding-flood-sensor"
 ---
 # Objective
