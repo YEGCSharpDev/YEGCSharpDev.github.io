@@ -7,9 +7,14 @@
 {% block content %}
 {{ section.content | safe }}
 
-<ul>
+<ul class="post-list">
 {% for page in section.pages %}
-    <li><a href="{{ page.permalink }}">{{ page.title }}</a></li>
+    <li>
+        {% if page.date %}
+            <span class="post-date">{{ page.date | date(format="%Y-%m-%d") }}</span> &mdash; 
+        {% endif %}
+        <a href="{{ page.permalink }}">{{ page.title }}</a>
+    </li>
 {% endfor %}
 </ul>
 {% endblock content %}
