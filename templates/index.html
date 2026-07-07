@@ -7,7 +7,6 @@
 {% block content %}
 {{ section.content | safe }}
 
-<!-- Added Posts Title -->
 <h2>Posts</h2>
 
 <ul class="post-list">
@@ -21,3 +20,42 @@
 {% endfor %}
 </ul>
 {% endblock content %}
+
+{% block sidebar %}
+<aside class="sidebar">
+    <div class="sidebar-content">
+        <p class="obsession-text">Latest obsession:</p>
+        <!-- ASCII Art -->
+        <pre class="ascii-art">
+                  /#\
+                 /###\
+                /#####\
+               /#######\
+              _ "=######\
+             /##=,_\#####\
+            /#############\
+           /###############\
+          /#################\
+         /###################\
+        /########*"""*########\
+       /#######/       \#######\
+      /########         ########\
+     /#########         ######m=,_
+    /##########         ##########\
+   /######***             ***######\
+  /###**                       **###\
+ /**                               **\\
+        </pre>
+        
+        <h3>About Me</h3>
+        <p>
+<code>while (true) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;days = random.randint(7,9999);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;obsess_about_tech(days);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;get_sick_of_it();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;discover_new_tech();<br>
+}</code>
+        </p>
+    </div>
+</aside>
+{% endblock sidebar %}
