@@ -1,13 +1,15 @@
 ---
-title : Upgrading to Noctalia v5.0 on CachyOs
+title : Upgrading to Noctalia v5.0 on CachyOS
+date : 2026-07-06
+slug : "noctalia-v5-upgrade-CachyOS"
 ---
 # Problem Statement
 
-CachyOs ships Noctalia v4.7.7 as part of its meta package `cachyos-niri-noctalia`. The meta package has both niri and noctalia as the name suggests.
+CachyOS ships Noctalia v4.7.7 as part of its meta package `CachyOS-niri-noctalia`. The meta package has both niri and noctalia as the name suggests.
 
 Noctalia has shipped V5 which is a complete rewrite and a different package than the v4.7.7 train (if I could call it that).
 
-It might take some time for CachyOs to switch from v4.7.7. I dont want to wait till then because v5.x looks sick.
+It might take some time for CachyOS to switch from v4.7.7. I dont want to wait till then because v5.x looks sick.
 
 # Solution
 
@@ -15,13 +17,13 @@ It might take some time for CachyOs to switch from v4.7.7. I dont want to wait t
 > - You are using defaults that came with the meta package.
 > - If not, this might not exactly work as-is.
 
-We are going to rip out old Noctalia, but the meta package lists Noctalia as a dependency, so running a remove command will fail with this error: `removing noctalia-shell breaks dependency 'noctalia-shell' required by cachyos-niri-noctalia`
+We are going to rip out old Noctalia, but the meta package lists Noctalia as a dependency, so running a remove command will fail with this error: `removing noctalia-shell breaks dependency 'noctalia-shell' required by CachyOS-niri-noctalia`
 
 If we force remove it, Niri will also become an orphan, so lets handle that one by one. 
 
 ## Saving Niri
 
-Lets mark Niri as explicity installed so it doesnt get orphaned.
+Lets mark Niri as explicitly installed so it doesnt get orphaned.
 
 ```sh
 sudo pacman -D --asexplicit niri
@@ -32,7 +34,7 @@ sudo pacman -D --asexplicit niri
 Lets also remove the meta package and niri shell, because its not really needed anymore.
 
 ```sh
-paru -R cachyos-niri-noctalia noctalia-shell
+paru -R CachyOS-niri-noctalia noctalia-shell
 ```
 
 ## New Noctalia
@@ -47,7 +49,7 @@ paru -S noctalia-git
 
 ## Accomodating breaking changes
 
-At this point new noctalia is available but since there are breaking changed between old and new version, we need to modify config files.
+At this point new noctalia is available but since there are breaking changes between old and new version, we need to modify config files.
 
 ### autostart.kdl
 
@@ -56,7 +58,7 @@ This file should be at `~/.config/niri/cfg/autostart.kdl`
 Comment out or remove the line that references noctalia-shell, should be something like `spawn-sh-at-startup "qs -c noctalia-shell"`
 and replace it with a simple spawn-at-startup
 
-```sh
+```kdl
  spawn-at-startup "noctalia" 
 ```
 
@@ -64,7 +66,7 @@ and replace it with a simple spawn-at-startup
 
 This file should be at `~/.config/niri/cfg/keybinds.kdl`
 
-Noctalia has simplied these calls to just follow the format `noctalia msg` instead of the IPC system. 
+Noctalia has simplified these calls to just follow the format `noctalia msg` instead of the IPC system. 
 
 You can remove all the IPC calls with simple msg calls. Here is my complete kdl file for reference.
 
