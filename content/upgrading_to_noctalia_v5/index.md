@@ -2,10 +2,11 @@
 title : Upgrading to Noctalia v5.0 on CachyOS
 date : 2026-07-06
 slug : "noctalia-v5-upgrade-CachyOS"
+updated : 2026-07-07
 ---
 # Problem Statement
 
-CachyOS ships Noctalia v4.7.7 as part of its meta package `CachyOS-niri-noctalia`. The meta package has both niri and noctalia as the name suggests.
+CachyOS ships Noctalia v4.7.7 as part of its meta package `cachyos-niri-noctalia`. The meta package has both niri and noctalia as the name suggests.
 
 Noctalia has shipped V5 which is a complete rewrite and a different package than the v4.7.7 train (if I could call it that).
 
@@ -17,7 +18,7 @@ It might take some time for CachyOS to switch from v4.7.7. I dont want to wait t
 > - You are using defaults that came with the meta package.
 > - If not, this might not exactly work as-is.
 
-We are going to rip out old Noctalia, but the meta package lists Noctalia as a dependency, so running a remove command will fail with this error: `removing noctalia-shell breaks dependency 'noctalia-shell' required by CachyOS-niri-noctalia`
+We are going to rip out old Noctalia, but the meta package lists Noctalia as a dependency, so running a remove command will fail with this error: `removing noctalia-shell breaks dependency 'noctalia-shell' required by cachyos-niri-noctalia`
 
 If we force remove it, Niri will also become an orphan, so lets handle that one by one. 
 
@@ -34,17 +35,17 @@ sudo pacman -D --asexplicit niri
 Lets also remove the meta package and niri shell, because its not really needed anymore.
 
 ```sh
-paru -R CachyOS-niri-noctalia noctalia-shell
+sudo pacman -R cachyos-niri-noctalia noctalia-shell
 ```
 
 ## New Noctalia
 
 > **Note**
-> - paru here instead of pacman because noctalia-git is in AUR, so we need an AUR helper.
+> - shelly here instead of pacman because noctalia-git is in AUR, so we need an AUR helper.
 
 Lets install the latest noctalia. Since AUR builds locally, expect it to take a long time based on your hardware.
 ```sh
-paru -S noctalia-git
+shelly install noctalia-git
 ```
 
 ## Accomodating breaking changes
@@ -209,3 +210,6 @@ binds {
     Mod+O                               repeat=false { toggle-overview; }
 }
 ```
+
+> **Information**
+> - Thanks to pete at noctalia discord for reviewing and suggesting corrections. paru commands were removed. incorrect casing on meta packages were corrected from the original post.
