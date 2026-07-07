@@ -3,6 +3,11 @@
 {% block title %}{{ page.title }}{% endblock title %}
 
 {% block content %}
+<!-- Top Navigation explicitly inside the post template -->
+<nav class="top-nav">
+    <a href="{{ get_url(path="/") }}" class="home-link">← Home</a>
+</nav>
+
 <header class="page-header">
     <h1 class="page-title">{{ page.title }}</h1>
     
