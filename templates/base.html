@@ -7,13 +7,28 @@
     <link rel="stylesheet" href="{{ get_url(path="style.css") }}">
 </head>
 <body>
-    <main>
-        <!-- The new Home navigation -->
-        <nav class="top-nav">
-            <a href="{{ get_url(path="/") }}" class="home-link">← Home</a>
-        </nav>
-        
-        {% block content %}{% endblock content %}
-    </main>
+    <div class="site-wrapper">
+        <main>
+            <nav class="top-nav">
+                <a href="{{ get_url(path="/") }}" class="home-link">← Home</a>
+            </nav>
+            
+            {% block content %}{% endblock content %}
+        </main>
+
+        <!-- Right Side Information -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <!-- Example ASCII Art (A little cat) -->
+                <pre class="ascii-art">
+ /\_/\
+( o.o )
+ > ^ <
+                </pre>
+                <h3>About Me</h3>
+                <p>Hi, I'm a developer writing about Linux, homelabs, and everything in between.</p>
+            </div>
+        </aside>
+    </div>
 </body>
 </html>
