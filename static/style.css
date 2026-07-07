@@ -97,36 +97,43 @@ img {
 
 /* 8. Page Header (Title & Date) */
 .page-header {
-    position: relative;
-    text-align: center; /* Centers the page title */
-    margin-bottom: 2.5rem; /* Adds space before the article content */
-    padding-top: 1.5em; /* Aligns visually with how normal h1s behave */
+    display: grid;
+    /* Creates 3 columns: 120px left, flexible center for title, 120px right for date */
+    grid-template-columns: 120px 1fr 120px; 
+    align-items: start; /* Keeps the date aligned to the top if the title wraps */
+    margin-bottom: 2.5rem;
+    padding-top: 1.5em;
 }
 
 .page-title {
-    margin-top: 0; /* Removing the global h1 margin so it centers perfectly in this box */
-    margin-bottom: 0;
+    grid-column: 2; /* Forces the title into the center column */
+    margin: 0;
+    text-align: center;
 }
 
 .page-date {
-    position: absolute;
-    right: 0;
-    top: 1.5em; /* Match the padding-top of the header to align with title text */
+    grid-column: 3; /* Forces the date into the right column */
+    text-align: right;
     font-size: 0.95rem;
-    color: var(--muted-text); /* Uses the new Catppuccin color */
+    color: var(--muted-text);
+    margin-top: 0.5em; /* A tiny nudge down so it visually aligns with the larger title text */
 }
 
-/* Fix for small screens to prevent the date and title from overlapping */
-@media (max-width: 600px) {
+/* Fix for small screens (Mobile) */
+@media (max-width: 650px) {
     .page-header {
-        text-align: left;
         display: flex;
-        flex-direction: column-reverse; /* Puts the date above the title */
+        flex-direction: column-reverse; /* Stacks the date above the title */
         padding-top: 0;
     }
     
+    .page-title {
+        text-align: left;
+    }
+    
     .page-date {
-        position: static; /* Removes absolute positioning */
+        text-align: left;
+        margin-top: 0;
         margin-bottom: 0.5em;
     }
 }
