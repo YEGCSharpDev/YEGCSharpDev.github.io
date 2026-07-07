@@ -1,6 +1,11 @@
 /* style.css */
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+/* Global Box-Sizing to prevent padding from causing horizontal overflow */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* 1. Catppuccin Mocha Palette */
 :root {
     --bg-color: #1e1e2e;      /* Mocha Base */
@@ -21,18 +26,17 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    overflow-wrap: break-word; /* Forces long unbroken text/URLs to wrap */
 }
 
 /* 3. The New 3-Column Layout */
 .site-wrapper {
     display: grid;
     /* 
-      Col 1: 1fr (Empty space to balance the screen)
-      Col 2: max 750px (The perfectly centered main article)
-      Col 3: 1fr (The right side space for your sidebar)
+      Changed 'auto' to '0'. This stops wide code blocks from blowing out the grid.
     */
-    grid-template-columns: 1fr minmax(auto, 750px) 1fr;
-    gap: 40px; /* Space between the main column and sidebar */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 750px) minmax(0, 1fr);
+    gap: 40px; 
     padding: 40px 20px;
     align-items: start;
 }
@@ -40,14 +44,16 @@ body {
 main {
     grid-column: 2;
     width: 100%;
+    min-width: 0; /* CRITICAL: Prevents long code blocks from stretching the entire page */
 }
 
 /* Sidebar Styling */
 .sidebar {
     grid-column: 3;
-    max-width: 250px; /* Prevents the sidebar from getting too wide */
+    max-width: 250px; 
     color: var(--muted-text);
     font-size: 0.95rem;
+    min-width: 0;
 }
 
 .sidebar h3 {
@@ -62,20 +68,20 @@ main {
 
 /* ASCII Art Styling */
 .ascii-art {
-    background: transparent; /* Removes the dark code block background */
+    background: transparent; 
     border: none;
     padding: 0;
     color: var(--heading-color);
     font-size: 0.85rem;
     line-height: 1.2;
     margin-bottom: 1rem;
-    overflow: hidden; /* Prevents horizontal scrollbars */
+    overflow: hidden; 
 }
 
 /* Responsive: Collapse to a single column on smaller screens */
 @media (max-width: 1100px) {
     .site-wrapper {
-        grid-template-columns: 1fr; /* Switch to 1 single column */
+        grid-template-columns: minmax(0, 1fr); /* Prevents mobile grid blowout */
         max-width: 750px;
         margin: 0 auto;
         padding: 40px 20px;
@@ -90,7 +96,7 @@ main {
         max-width: 100%;
         margin-top: 40px;
         padding-top: 20px;
-        border-top: 1px dashed var(--border-color); /* Separates it on mobile */
+        border-top: 1px dashed var(--border-color); 
     }
 }
 
@@ -114,7 +120,6 @@ a:hover {
 
 /* 5. Code Block Styling (Essential for Dev sites) */
 code, pre {
-    /* Kept your monospace stack for code blocks, as Atkinson is proportional */
     font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
     background-color: var(--code-bg);
     border-radius: 4px;
@@ -123,7 +128,8 @@ code, pre {
 pre {
     padding: 15px;
     border: 1px solid var(--border-color);
-    overflow-x: auto;
+    overflow-x: auto; /* Allows only the code block to scroll horizontally */
+    max-width: 100%; /* Double ensures the box doesn't stretch past the screen */
 }
 
 code {
@@ -132,7 +138,6 @@ code {
 
 /* 6. Information Blurbs (Blockquotes) */
 blockquote {
-    /* Uses the Mocha Blue link color at 10% opacity for a distinct tinted background */
     background-color: rgba(137, 180, 250, 0.1); 
     border-left: 4px solid var(--link-color);
     margin: 1.5em 0;
@@ -144,7 +149,6 @@ blockquote p {
     margin: 0;
 }
 
-/* Adds a tiny bit of spacing between the "Note:" heading and any bullets inside */
 blockquote ul {
     margin-top: 0.5em;
     margin-bottom: 0;
@@ -154,40 +158,39 @@ blockquote ul {
 img {
     max-width: 100%;
     height: auto;
-    display: block; /* Removes weird bottom spacing */
-    margin: 2em auto; /* Centers the image and gives it breathing room */
-    border-radius: 8px; /* Optional: rounds the corners to match your blurbs */
+    display: block; 
+    margin: 2em auto; 
+    border-radius: 8px; 
 }
 
 /* 8. Page Header (Title & Date) */
 .page-header {
     display: grid;
-    /* Creates 3 columns: 120px left, flexible center for title, 120px right for date */
     grid-template-columns: 120px 1fr 120px; 
-    align-items: start; /* Keeps the date aligned to the top if the title wraps */
+    align-items: start; 
     margin-bottom: 2.5rem;
     padding-top: 1.5em;
 }
 
 .page-title {
-    grid-column: 2; /* Forces the title into the center column */
+    grid-column: 2; 
     margin: 0;
     text-align: center;
 }
 
 .page-date {
-    grid-column: 3; /* Forces the date into the right column */
+    grid-column: 3; 
     text-align: right;
     font-size: 0.95rem;
     color: var(--muted-text);
-    margin-top: 0.5em; /* A tiny nudge down so it visually aligns with the larger title text */
+    margin-top: 0.5em; 
 }
 
 /* Fix for small screens (Mobile) */
 @media (max-width: 650px) {
     .page-header {
         display: flex;
-        flex-direction: column-reverse; /* Stacks the date above the title */
+        flex-direction: column-reverse; 
         padding-top: 0;
     }
     
@@ -205,13 +208,13 @@ img {
 /* 9. Top Navigation (Home Link) */
 .top-nav {
     margin-bottom: 2rem;
-    text-align: left; /* Ensures it stays on the left */
+    text-align: left; 
 }
 
 .home-link {
     font-weight: 700;
     color: var(--muted-text);
-    border-bottom: none; /* Removes the underline effect from global links */
+    border-bottom: none; 
     font-size: 1.1rem;
 }
 
@@ -222,7 +225,7 @@ img {
 
 /* 10. Post List (Home Page) */
 .post-list {
-    list-style: none; /* Removes the default bullet points */
+    list-style: none; 
     padding: 0;
     margin-top: 2rem;
 }
@@ -234,7 +237,6 @@ img {
 
 .post-date {
     color: var(--muted-text);
-    /* Monospace font keeps the YYYY-MM-DD dates aligned perfectly vertically */
     font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
     font-size: 0.95rem;
 }
@@ -252,8 +254,8 @@ img {
     border: none;
     padding: 0;
     color: var(--heading-color);
-    font-size: 0.5rem; /* Dramatically shrinks the size of the art */
-    line-height: 1.1; /* Keeps the vertical proportions accurate */
+    font-size: 0.5rem; 
+    line-height: 1.1; 
     margin-bottom: 2rem;
     margin-top: 0;
     overflow: hidden; 
