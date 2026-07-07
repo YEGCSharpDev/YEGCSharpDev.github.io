@@ -5,6 +5,7 @@
 :root {
     --bg-color: #1e1e2e;      /* Mocha Base */
     --text-color: #cdd6f4;    /* Mocha Text */
+    --muted-text: #a6adc8;    /* Mocha Subtext0 (for dates and subtle text) */
     --heading-color: #b4befe; /* Mocha Lavender (soft contrast for headings) */
     --link-color: #89b4fa;    /* Mocha Blue */
     --code-bg: #181825;       /* Mocha Mantle (slightly darker than base for code blocks) */
@@ -92,4 +93,40 @@ img {
     display: block; /* Removes weird bottom spacing */
     margin: 2em auto; /* Centers the image and gives it breathing room */
     border-radius: 8px; /* Optional: rounds the corners to match your blurbs */
+}
+
+/* 8. Page Header (Title & Date) */
+.page-header {
+    position: relative;
+    text-align: center; /* Centers the page title */
+    margin-bottom: 2.5rem; /* Adds space before the article content */
+    padding-top: 1.5em; /* Aligns visually with how normal h1s behave */
+}
+
+.page-title {
+    margin-top: 0; /* Removing the global h1 margin so it centers perfectly in this box */
+    margin-bottom: 0;
+}
+
+.page-date {
+    position: absolute;
+    right: 0;
+    top: 1.5em; /* Match the padding-top of the header to align with title text */
+    font-size: 0.95rem;
+    color: var(--muted-text); /* Uses the new Catppuccin color */
+}
+
+/* Fix for small screens to prevent the date and title from overlapping */
+@media (max-width: 600px) {
+    .page-header {
+        text-align: left;
+        display: flex;
+        flex-direction: column-reverse; /* Puts the date above the title */
+        padding-top: 0;
+    }
+    
+    .page-date {
+        position: static; /* Removes absolute positioning */
+        margin-bottom: 0.5em;
+    }
 }
