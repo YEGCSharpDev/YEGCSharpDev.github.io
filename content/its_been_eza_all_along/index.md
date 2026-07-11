@@ -17,7 +17,7 @@ For more information, try --help'.
 
 ## Solution :
 
-I always thought ls was a simple command but never extented that thought as to how icons are displayed.
+I always thought ls was a simple command but never extended that thought as to how icons are displayed.
 
 Started digging through fish config to see what alias was being done for ls.
 
@@ -37,19 +37,19 @@ and how ls is not really ls at all but eza all along.
 
 ![](./ls-aliases-of-CachyOS.png)
 
-now that I knew it was eza, ran the manual for it to see what is missing with icons usage as that was the error.
+Now that I knew it was eza, ran the manual for it to see what is missing with icons usage as that was the error.
 
 ```bash
 man eza
 ```
 
-Voila ! Icons need a parameter now but the aliases above (lines 90 - 96) dont have any such selections.
+Voila ! Icons need a parameter now but the aliases above (lines 90 - 96) don't have any such selections.
 
 ![](./manning-eza.png)
 
-I dont want to set always because the terminal output might become garbage when running through tty. Setting it to automatic makes a lot of sense.
+I don't want to set `always` because the terminal output might become garbage when running through tty. Setting it to `auto` makes a lot of sense.
 
-So let's edit it and set it to auto. `sudo` is needed here because its a read-only path for normal users. It is also why helix reverted to default purple theme because its running as root and root has no themes set up.
+So let's edit it and set it to auto. `sudo` is needed here because it's a read-only path for normal users. It is also why helix reverted to default purple theme because it's running as root and root has no themes set up.
 
 ### Using cool features of Helix to find and replace --icons text :
 
@@ -91,3 +91,8 @@ Loading up the config values again to this shell and ls is now fixed!
 source ~/.config/fish/config.fish
 ```
 ![](./ls-fixed.png)
+
+> **Information**
+> - Updating the `/usr/share/cachyos-fish-config/cachyos-config.fish` is probably a bad idea.
+> - The next update to Cachy might wipe this out. On the other hand, the next update might address this fix as well. I trust CachyOS with the config.
+> - This post was merely how I found ls wasn't actually ls but eza all along.
