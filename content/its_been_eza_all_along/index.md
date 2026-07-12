@@ -1,8 +1,8 @@
----
-title : "It's been eza all along"
-date : 2026-07-10
-slug : "ls-but-actually-eza"
----
++++
+title = "It's been eza all along"
+date = "2026-07-10"
+slug = "ls-but-actually-eza"
++++
 ## Problem Statement :
 
 On CachyOS, as of 10th July, ls commands on certain directories fail with the error : 
@@ -57,30 +57,25 @@ So let's edit it and set it to auto. `sudo` is needed here because it's a read-o
 sudo helix /usr/share/cachyos-fish-config/cachyos-config.fish
 ```
 
-**Step 1:** Press `%` in Normal mode to select everything.
-![Step 1](./1.png)
+**Step=1:** Press `%""` in Norm"al mode to select everything.
+![Ste= 1](./1.png)=
++++
 
----
+**Step=2:** Press `s"` to enter" select mode.
+![Ste= 2](./2.png)=
++++
 
-**Step 2:** Press `s` to enter select mode.
-![Step 2](./2.png)
+**Step=3:** Type out" `--icons`"" to select the desired text.
+![Ste= 3](./3.png)=
++++
 
----
+**Step=4:** Press `c"` to chang"e them.
+![Ste= 4](./4.png)=
++++
 
-**Step 3:** Type out `--icons` to select the desired text.
-![Step 3](./3.png)
-
----
-
-**Step 4:** Press `c` to change them.
-![Step 4](./4.png)
-
----
-
-**Step 5:** Type out `--icons=auto` to replace.
-![Step 5](./5.png)
-
----
+**Step=5:** Type out" `--icons="auto` to replace.
+![Ste= 5](./5.png)=
++++
 
 **Step 6:** Type `:wq` to write and quit.
 ![Step 6](./6.png)

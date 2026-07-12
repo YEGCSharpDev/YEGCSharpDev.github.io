@@ -1,8 +1,8 @@
----
-title: Extending Zigbee Flood Sensor
-date : 2026-07-05
-slug : "modding-flood-sensor"
----
++++
+title = "Extending Zigbee Flood Sensor"
+date = "2026-07-05"
+slug = "modding-flood-sensor"
++++
 # Objective
 
 With yellow warning flooding risk,incessant rains, and sump pump activating so frequently: I wanted some kind of indication if the basement flooded.

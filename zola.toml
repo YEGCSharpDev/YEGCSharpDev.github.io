@@ -1,0 +1,17 @@
+# The URL the site will be built for
+base_url = "https://yegcsharpdev.github.io"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# The site title
+title = "YEGCSharpDev"
+
+# The site description
+description = "I write stuff"
+
+default_language = "en"
+
+minify_html = false
+
+generate_feeds = true

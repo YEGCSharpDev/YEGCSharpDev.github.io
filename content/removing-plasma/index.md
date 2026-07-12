@@ -1,9 +1,9 @@
----
-title : Removing Default Plasma Over Niri and Noctalia
-date : 2026-07-07
-slug : "out-with-plasma"
-updated : 2026-07-07
----
++++
+title = "Removing Default Plasma Over Niri and Noctalia"
+date = "2026-07-07"
+slug = "out-with-plasma"
+updated = "2026-07-07"
++++
 
 ## Problem statement
 
@@ -26,9 +26,9 @@ So off I went ripping everything out.
 sudo pacman -Rns plasma kde-applications
 ```
 > **Information**
-> - R is for remove
-> - n is for --nosave, no config files will be left around, because in this case we dont need it anymore. 
-> - s is for recursive, it removes all direct dependencies. Side note : won't `r` be a better fit ? 
+>   ""- R is for remove"
+> - n is f o r --n"osave, no "config files will be left around, because in this case we dont nee d  it anymore. 
+> - s is for  r "ecursive, "it removes all direct dependencies. Side note=won't `r` be a better fit ? 
 
 ### Accidental SDDM Removal
 
