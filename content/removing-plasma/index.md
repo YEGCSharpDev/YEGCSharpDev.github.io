@@ -129,3 +129,56 @@ MaximumUid=29999
 ```
 
 Silent SDDM is good enough to get the job done and I am happy with it (for now).
+
+### Out with SDDM in with greetd (August 3rd update)
+
+Because constantly breaking things is a disease at this point, did a reinstall of CachyOS with Niri and Noctalia defaults and gamescope wouldnt start.
+
+Look like there is a lot of massaging to be done to let SDDM behave with gamescope. This led to `greetd` looking like a nice alternate so that journey began. 
+
+Documenting them here because inevitably am going to reinstall in a few weeks. 
+
+First lets install greetr and noctalia-greetr
+```sh
+sudo pacman -S greetd noctalia-greeter
+```
+
+Then lets disable SDDM and the current display manager
+```sh
+sudo systemctl disable sddm
+sudo systemctl disable display-manager
+```
+Now to edit the config value
+
+```sh
+sudo micro /etc/greetd/config.toml
+```
+
+```toml
+[terminal]
+# The VT to run the greeter on. Can be "next", "current" or a number
+# designating the VT.
+vt = current
+
+# The default session, also known as the greeter.
+[default_session]
+command = "/usr/bin/noctalia-greeter-session"
+user = "greeter"
+
+# `agreety` is the bundled agetty/login-lookalike. You can replace `/bin/sh`
+# with whatever you want started, such as `sway`.
+#command = "agreety --cmd /bin/sh"
+
+# The user to run the command as. The privileges this user must have depends
+# on the greeter. A graphical greeter may for example require the user to be
+# in the `video` group.
+#user = "greeter"
+```
+
+and finally lets enable greetd
+```sh
+sudo systemctl enable greetd
+```
+This should enable `greetd` service when the pc starts next it should execute the command which is `noctalia-greeter-session` and that should provide an entry point for both niri and gamescope.
+
+Tests look fine for now! :)
